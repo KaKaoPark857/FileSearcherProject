@@ -11,9 +11,6 @@ using System.IO;
 
 /*
  * 상위 경로 설정 후 하위 디렉토리까지 모두 다 찾기
- * --> 최상위 디렉토리 C/D/E를 선택해서 값에 집어넣기 ////해결
- * --> 최상위 디렉토리가 없으면 오류메시지 /// 해결
- * --> 확장자명 상관없이 검색
  * 리스트 박스내 파일 클릭 시 해당 폴더 열기 or 파일 열기
  * 버튼으로 클릭
  * 버튼으로 선택한 파일 바탕화면에 바로가기 만들기
@@ -61,8 +58,8 @@ namespace FileSearcher
                 }
                 
             }
+
             FilenameTB.Clear();
-            
         }
 
         private void ListSearchBut_Click(object sender, EventArgs e)

@@ -40,6 +40,7 @@ namespace FileSearcher
             this.Filedate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DirName = new System.Windows.Forms.DomainUpDown();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // nameSearchBut
@@ -169,6 +170,10 @@ namespace FileSearcher
             this.DirName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DirName.Visible = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -202,6 +207,7 @@ namespace FileSearcher
         private System.Windows.Forms.ColumnHeader Filedate;
         private System.Windows.Forms.ColumnHeader FileLength;
         private System.Windows.Forms.DomainUpDown DirName;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
