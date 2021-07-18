@@ -42,36 +42,36 @@ namespace FileSearcher
         {
             string spath = DirName.Text;
             
-            DirectoryInfo di = new DirectoryInfo(spath+":\\");
+            DirectoryInfo di = new DirectoryInfo(spath+@":\");
 
             //FileInfo file = new FileInfo(spath+"\\");
 
-            if(di.Exists == false) //디렉토리 존재여부 확인
+            if (di.Exists == false) //디렉토리 존재여부 확인
             {
                 MessageBox.Show("해당 디렉토리가 존재하지 않습니다.");
                 return;
             }
-            else if(FilenameTB.Text == "")
+            else if (FilenameTB.Text == "")
             {
                 MessageBox.Show("파일 이름을 입력해주세요.");
             }
             else
             {
-                
+
                 OpenFolderBT.Visible = true;
                 MakeCopyBT.Visible = true;
-                /*try
-                {*/
-                    foreach (FileInfo file in di.GetFiles(FilenameTB.Text, SearchOption.AllDirectories))
+                try
+                {
+                    foreach (FileInfo file in di.GetFiles(FilenameTB.Text))//, SearchOption.AllDirectories))
                     {
                         //if (UnauthorizedAccessException==true) continue;
                         FilenameListBox.Items.Add(new ListViewItem(new string[] { file.Name, file.DirectoryName, file.CreationTime.ToString(), file.Length.ToString() }));
                     }
-                //}
-                /*catch (UnauthorizedAccessException)
+                }
+                catch (UnauthorizedAccessException)
                 {
                     MessageBox.Show("ERROR");
-                }*/
+                }
             }
 
             FilenameTB.Clear();
