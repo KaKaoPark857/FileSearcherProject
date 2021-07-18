@@ -41,6 +41,8 @@ namespace FileSearcher
             this.FileLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DirName = new System.Windows.Forms.DomainUpDown();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.OpenFolderBT = new System.Windows.Forms.Button();
+            this.MakeCopyBT = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameSearchBut
@@ -174,11 +176,37 @@ namespace FileSearcher
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // OpenFolderBT
+            // 
+            this.OpenFolderBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.OpenFolderBT.Location = new System.Drawing.Point(593, 105);
+            this.OpenFolderBT.Name = "OpenFolderBT";
+            this.OpenFolderBT.Size = new System.Drawing.Size(119, 42);
+            this.OpenFolderBT.TabIndex = 6;
+            this.OpenFolderBT.Text = "폴더 열기";
+            this.OpenFolderBT.UseVisualStyleBackColor = true;
+            this.OpenFolderBT.Visible = false;
+            this.OpenFolderBT.Click += new System.EventHandler(this.OpenFolderBT_Click);
+            // 
+            // MakeCopyBT
+            // 
+            this.MakeCopyBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.MakeCopyBT.Location = new System.Drawing.Point(718, 105);
+            this.MakeCopyBT.Name = "MakeCopyBT";
+            this.MakeCopyBT.Size = new System.Drawing.Size(119, 42);
+            this.MakeCopyBT.TabIndex = 7;
+            this.MakeCopyBT.Text = "바로가기 만들기";
+            this.MakeCopyBT.UseVisualStyleBackColor = true;
+            this.MakeCopyBT.Visible = false;
+            this.MakeCopyBT.Click += new System.EventHandler(this.MakeCopyBT_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.MakeCopyBT);
+            this.Controls.Add(this.OpenFolderBT);
             this.Controls.Add(this.DirName);
             this.Controls.Add(this.FilenameListBox);
             this.Controls.Add(this.FilenameBT);
@@ -208,6 +236,8 @@ namespace FileSearcher
         private System.Windows.Forms.ColumnHeader FileLength;
         private System.Windows.Forms.DomainUpDown DirName;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button OpenFolderBT;
+        private System.Windows.Forms.Button MakeCopyBT;
     }
 }
 
