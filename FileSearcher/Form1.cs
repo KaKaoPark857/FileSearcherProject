@@ -41,8 +41,9 @@ namespace FileSearcher
         private void FilenameBT_Click(object sender, EventArgs e)
         {
             string spath = DirName.Text;
+            FilenameListBox.Items.Clear();
             
-            DirectoryInfo di = new DirectoryInfo(spath+@":\");
+            DirectoryInfo di = new DirectoryInfo(spath+":\\");
 
             //FileInfo file = new FileInfo(spath+"\\");
 
