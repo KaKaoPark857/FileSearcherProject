@@ -36,6 +36,9 @@ namespace FileSearcher
             FilenameBT.Visible = true;
             FilenameListBox.Visible = true;
             DirName.Visible = true;
+            ListSearchList.Visible = false;
+            ListSearchTree.Visible = false;
+            ListSearchBT.Visible = false;
         }
        
         private void FilenameBT_Click(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace FileSearcher
             string spath = DirName.Text;
             FilenameListBox.Items.Clear();
             
-            DirectoryInfo di = new DirectoryInfo(spath+":\\");
+            DirectoryInfo di = new DirectoryInfo(spath + ":\\visual Workspace\\");
 
             //FileInfo file = new FileInfo(spath+"\\");
 
@@ -61,18 +64,21 @@ namespace FileSearcher
 
                 OpenFolderBT.Visible = true;
                 MakeCopyBT.Visible = true;
+                
+                FileInfo[] filestr = di.GetFiles(FilenameTB.Text, SearchOption.AllDirectories);
                 try
                 {
-                    foreach (FileInfo file in di.GetFiles(FilenameTB.Text))//, SearchOption.AllDirectories))
+                    foreach (FileInfo file in filestr)//di.GetFiles(FilenameTB.Text, SearchOption.AllDirectories))
                     {
-                        //if (UnauthorizedAccessException==true) continue;
                         FilenameListBox.Items.Add(new ListViewItem(new string[] { file.Name, file.DirectoryName, file.CreationTime.ToString(), file.Length.ToString() }));
                     }
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    MessageBox.Show("ERROR");
+                    MessageBox.Show("Access Error!!");
                 }
+
+
             }
 
             FilenameTB.Clear();
@@ -84,6 +90,13 @@ namespace FileSearcher
             FilenameTB.Visible = false;
             FilenameBT.Visible = false;
             FilenameListBox.Visible = false;
+            DirName.Visible = true;
+            OpenFolderBT.Visible = false;
+            MakeCopyBT.Visible = false;
+            ListSearchList.Visible = true;
+            ListSearchTree.Visible = true;
+            ListSearchBT.Visible = true;
+            
         }
 
         private void OpenFolderBT_Click(object sender, EventArgs e)
@@ -113,6 +126,11 @@ namespace FileSearcher
             }
 
             
+        }
+
+        private void ListSearchBT_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
