@@ -164,7 +164,7 @@ namespace FileSearcher
             {
                 if (e.Node.Nodes.Count == 1 && e.Node.Nodes[0].Text.Equals("\\"))
                 {
-                    e.Node.Nodes.Clear();
+                    e.Node.Nodes.Clear();//노드 클리어
 
                     string path = e.Node.FullPath.Substring(e.Node.FullPath.IndexOf("\\") + 1);
 
@@ -181,7 +181,7 @@ namespace FileSearcher
                 MessageBox.Show("treeView1_BeforeExpand : " + ex.Message);
             }
         }
-        private void ViewDirectoryList(string path)
+        private void ViewDirectoryList(string path) //디렉토리 리스트 보기(리스트 뷰 출력)
         {
             if (m_thread != null && m_thread.IsAlive)
                 m_thread.Abort();
@@ -193,7 +193,7 @@ namespace FileSearcher
             {
                 curPath = path.Substring(path.IndexOf("\\") + 1);
                 ListLabel.Text = (curPath.Length > 4) ? curPath.Remove(curPath.IndexOf("\\") + 1, 1) : curPath;
-                m_curPath = ListLabel.Text;
+                m_curPath = ListLabel.Text; //디렉토리 변경시 노출되는 경로값 수정
             }
             else
             {
@@ -203,11 +203,11 @@ namespace FileSearcher
 
             try
             {
-                ListSearchList.Items.Clear();
+                ListSearchList.Items.Clear(); //디렉토리 클릭시 리스트 뷰 클리어
 
                 string[] directories = Directory.GetDirectories(curPath);
 
-                foreach (string directory in directories)
+                foreach (string directory in directories) //새로운 디렉토리 클릭시 리스트 뷰 출력(폴더)
                 {
                     DirectoryInfo info = new DirectoryInfo(directory);
                     ListViewItem item = new ListViewItem(new string[]
@@ -219,7 +219,7 @@ namespace FileSearcher
 
                 string[] files = Directory.GetFiles(curPath);
 
-                foreach (string file in files)
+                foreach (string file in files) //새로운 디렉토리 클릭시 리스트 뷰 출력(파일)
                 {
                     FileInfo info = new FileInfo(file);
                     ListViewItem item = new ListViewItem(new string[]
@@ -234,7 +234,7 @@ namespace FileSearcher
                 MessageBox.Show("ViewDirectoryList : " + ex.Message);
             }
         }
-        private void SelectTreeView(TreeNode node)
+        private void SelectTreeView(TreeNode node) //트리뷰 선택
         {
             if (node.FullPath == null)
             {
@@ -251,7 +251,7 @@ namespace FileSearcher
             SelectTreeView(e.Node);
         }
 
-        private void ListSearchBT_Click(object sender, EventArgs e)
+        private void ListSearchBT_Click(object sender, EventArgs e) //리스트 검색버튼(찾을 위치: 디렉토리 설정)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 
@@ -264,20 +264,20 @@ namespace FileSearcher
                 ViewDirectoryList(m_curPath);
             }
         }
-        private void ListSearchList_DoubleClick(object sender, EventArgs e)
+        private void ListSearchList_DoubleClick(object sender, EventArgs e) //리스트 뷰 클릭 시 해당 파일 실행
         {
             if (ListSearchList.SelectedItems.Count == 1)
             {
                 string processPath;
-                if (ListSearchList.SelectedItems[0].Text.IndexOf("\\") > 0)
+                if (ListSearchList.SelectedItems[0].Text.IndexOf("\\") > 0) //--> 검색으로 경로가 표시된 경우 사용
                     processPath = ListSearchList.SelectedItems[0].Text;
                 else
-                    processPath = m_curPath + "\\" + ListSearchList.SelectedItems[0].Text;
+                    processPath = m_curPath + "\\" + ListSearchList.SelectedItems[0].Text; //--> 트리뷰에서 얻어온 폴더를 읽어온 경우 사용
 
-                Process.Start("explorer.exe", processPath);
+                Process.Start("explorer.exe", processPath); //윈도우 탐색기를 이용한 파일 실행
             }
         }
-        private void ListSearchBT2_Click(object sender, EventArgs e)
+        private void ListSearchBT2_Click(object sender, EventArgs e) //리스트 검색 버튼(파일 이름.확장자명 으로 검색)
         {
             if (m_thread != null && m_thread.IsAlive)
                 m_thread.Abort();
@@ -336,11 +336,7 @@ namespace FileSearcher
                 }
             }
         }
-        private void ListSearchTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-         
-        }
-
+       
         
     }
 }
