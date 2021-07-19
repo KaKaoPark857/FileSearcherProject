@@ -27,6 +27,8 @@ namespace FileSearcher
             InitializeComponent();
             FilenameListBox.FullRowSelect = true;
             FilenameListBox.GridLines = true;
+            ListSearchList.FullRowSelect = true;
+            ListSearchList.GridLines = true;
         }
 
         private void nameSearchBut_Click(object sender, EventArgs e)
@@ -96,9 +98,55 @@ namespace FileSearcher
             ListSearchList.Visible = true;
             ListSearchTree.Visible = true;
             ListSearchBT.Visible = true;
-            
+
+
+            string spath = DirName.Text;
+            DirectoryInfo di = new DirectoryInfo(spath + ":\\");
+            ListSearchTree.Nodes.Clear();
+            if (di.Exists == false) //디렉토리 존재여부 확인
+            {
+                MessageBox.Show("해당 디렉토리가 존재하지 않습니다.");
+                return;
+            }
+
+            init(ListSearchTree);
+           
         }
 
+        public static void init(TreeView DirTree)
+        {
+            
+            string[] Drives = Directory.GetLogicalDrives();
+            foreach (string drive in Drives)
+            {
+                DirectoryInfo dir = new DirectoryInfo(drive);
+                TreeNode root = new TreeNode(drive);
+                DirTree.Nodes.Add(root);
+                GetDirectoryNodes(root, dir.FullName);
+            }
+
+            //string path = "C:\\test";
+            //TreeNode trvi = new TreeNode("Test");
+            //DirTree.Nodes.Add(trvi);
+            //GetDirectoryNodes(trvi, path);
+        }
+
+        private static void GetDirectoryNodes(TreeNode root, string _path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(_path);
+            foreach (var di in dir.GetDirectories())
+            {
+                TreeNode trviParent = new TreeNode(di.Name);
+                root.Nodes.Add(trviParent);
+                GetDirectoryNodes(trviParent, di.FullName);
+            }
+
+            foreach (var file in dir.GetFiles())
+            {
+                TreeNode trvi = new TreeNode(file.Name);
+                root.Nodes.Add(trvi);
+            }
+        }
         private void OpenFolderBT_Click(object sender, EventArgs e)
         {
             string path = FilenameListBox.SelectedItems[0].SubItems[1].Text;
@@ -130,7 +178,12 @@ namespace FileSearcher
 
         private void ListSearchBT_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void ListSearchTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+         
         }
     }
 }

@@ -250,11 +250,13 @@ namespace FileSearcher
             // ListSearchTree
             // 
             this.ListSearchTree.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ListSearchTree.FullRowSelect = true;
             this.ListSearchTree.Location = new System.Drawing.Point(12, 191);
             this.ListSearchTree.Name = "ListSearchTree";
             this.ListSearchTree.Size = new System.Drawing.Size(850, 851);
             this.ListSearchTree.TabIndex = 9;
             this.ListSearchTree.Visible = false;
+            this.ListSearchTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ListSearchTree_NodeMouseClick);
             // 
             // ListSearchBT
             // 
