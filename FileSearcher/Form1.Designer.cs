@@ -49,15 +49,17 @@ namespace FileSearcher
             this.ListLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListSearchTree = new System.Windows.Forms.TreeView();
             this.ListSearchBT = new System.Windows.Forms.Button();
+            this.ListLabel = new System.Windows.Forms.Label();
+            this.ListSearchBT2 = new System.Windows.Forms.Button();
+            this.ListSearchTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nameSearchBut
             // 
             this.nameSearchBut.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.nameSearchBut.Location = new System.Drawing.Point(33, 39);
-            this.nameSearchBut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nameSearchBut.Location = new System.Drawing.Point(29, 31);
             this.nameSearchBut.Name = "nameSearchBut";
-            this.nameSearchBut.Size = new System.Drawing.Size(171, 62);
+            this.nameSearchBut.Size = new System.Drawing.Size(150, 50);
             this.nameSearchBut.TabIndex = 0;
             this.nameSearchBut.Text = "이름으로 찾기";
             this.nameSearchBut.UseVisualStyleBackColor = true;
@@ -66,10 +68,9 @@ namespace FileSearcher
             // ListSearchBut
             // 
             this.ListSearchBut.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ListSearchBut.Location = new System.Drawing.Point(245, 39);
-            this.ListSearchBut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ListSearchBut.Location = new System.Drawing.Point(214, 31);
             this.ListSearchBut.Name = "ListSearchBut";
-            this.ListSearchBut.Size = new System.Drawing.Size(171, 62);
+            this.ListSearchBut.Size = new System.Drawing.Size(150, 50);
             this.ListSearchBut.TabIndex = 1;
             this.ListSearchBut.Text = "리스트로 찾기";
             this.ListSearchBut.UseVisualStyleBackColor = true;
@@ -78,10 +79,9 @@ namespace FileSearcher
             // FilenameTB
             // 
             this.FilenameTB.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FilenameTB.Location = new System.Drawing.Point(222, 142);
-            this.FilenameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FilenameTB.Location = new System.Drawing.Point(194, 114);
             this.FilenameTB.Name = "FilenameTB";
-            this.FilenameTB.Size = new System.Drawing.Size(289, 30);
+            this.FilenameTB.Size = new System.Drawing.Size(253, 26);
             this.FilenameTB.TabIndex = 2;
             this.FilenameTB.Visible = false;
             // 
@@ -89,9 +89,9 @@ namespace FileSearcher
             // 
             this.FIlenameLabel.AutoSize = true;
             this.FIlenameLabel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FIlenameLabel.Location = new System.Drawing.Point(30, 146);
+            this.FIlenameLabel.Location = new System.Drawing.Point(26, 117);
             this.FIlenameLabel.Name = "FIlenameLabel";
-            this.FIlenameLabel.Size = new System.Drawing.Size(101, 20);
+            this.FIlenameLabel.Size = new System.Drawing.Size(82, 16);
             this.FIlenameLabel.TabIndex = 3;
             this.FIlenameLabel.Text = "파일 이름";
             this.FIlenameLabel.Visible = false;
@@ -99,10 +99,9 @@ namespace FileSearcher
             // FilenameBT
             // 
             this.FilenameBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FilenameBT.Location = new System.Drawing.Point(528, 141);
-            this.FilenameBT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FilenameBT.Location = new System.Drawing.Point(453, 113);
             this.FilenameBT.Name = "FilenameBT";
-            this.FilenameBT.Size = new System.Drawing.Size(88, 34);
+            this.FilenameBT.Size = new System.Drawing.Size(77, 27);
             this.FilenameBT.TabIndex = 4;
             this.FilenameBT.Text = "검색";
             this.FilenameBT.UseVisualStyleBackColor = true;
@@ -118,10 +117,9 @@ namespace FileSearcher
             this.FileLength});
             this.FilenameListBox.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FilenameListBox.HideSelection = false;
-            this.FilenameListBox.Location = new System.Drawing.Point(12, 191);
-            this.FilenameListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FilenameListBox.Location = new System.Drawing.Point(10, 153);
             this.FilenameListBox.Name = "FilenameListBox";
-            this.FilenameListBox.Size = new System.Drawing.Size(1700, 851);
+            this.FilenameListBox.Size = new System.Drawing.Size(1488, 682);
             this.FilenameListBox.TabIndex = 3;
             this.FilenameListBox.UseCompatibleStateImageBehavior = false;
             this.FilenameListBox.View = System.Windows.Forms.View.Details;
@@ -175,10 +173,9 @@ namespace FileSearcher
             this.DirName.Items.Add("Z");
             this.DirName.Items.Add("A");
             this.DirName.Items.Add("B");
-            this.DirName.Location = new System.Drawing.Point(130, 146);
-            this.DirName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DirName.Location = new System.Drawing.Point(114, 117);
             this.DirName.Name = "DirName";
-            this.DirName.Size = new System.Drawing.Size(85, 25);
+            this.DirName.Size = new System.Drawing.Size(74, 21);
             this.DirName.TabIndex = 5;
             this.DirName.Text = "C";
             this.DirName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -187,10 +184,9 @@ namespace FileSearcher
             // OpenFolderBT
             // 
             this.OpenFolderBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.OpenFolderBT.Location = new System.Drawing.Point(678, 131);
-            this.OpenFolderBT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OpenFolderBT.Location = new System.Drawing.Point(593, 105);
             this.OpenFolderBT.Name = "OpenFolderBT";
-            this.OpenFolderBT.Size = new System.Drawing.Size(136, 52);
+            this.OpenFolderBT.Size = new System.Drawing.Size(119, 42);
             this.OpenFolderBT.TabIndex = 6;
             this.OpenFolderBT.Text = "폴더 열기";
             this.OpenFolderBT.UseVisualStyleBackColor = true;
@@ -200,10 +196,9 @@ namespace FileSearcher
             // MakeCopyBT
             // 
             this.MakeCopyBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.MakeCopyBT.Location = new System.Drawing.Point(821, 131);
-            this.MakeCopyBT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MakeCopyBT.Location = new System.Drawing.Point(718, 105);
             this.MakeCopyBT.Name = "MakeCopyBT";
-            this.MakeCopyBT.Size = new System.Drawing.Size(136, 52);
+            this.MakeCopyBT.Size = new System.Drawing.Size(119, 42);
             this.MakeCopyBT.TabIndex = 7;
             this.MakeCopyBT.Text = "바로가기 만들기";
             this.MakeCopyBT.UseVisualStyleBackColor = true;
@@ -219,13 +214,15 @@ namespace FileSearcher
             this.ListLength});
             this.ListSearchList.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ListSearchList.HideSelection = false;
-            this.ListSearchList.Location = new System.Drawing.Point(868, 192);
+            this.ListSearchList.Location = new System.Drawing.Point(760, 154);
+            this.ListSearchList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ListSearchList.Name = "ListSearchList";
-            this.ListSearchList.Size = new System.Drawing.Size(850, 851);
+            this.ListSearchList.Size = new System.Drawing.Size(744, 682);
             this.ListSearchList.TabIndex = 8;
             this.ListSearchList.UseCompatibleStateImageBehavior = false;
             this.ListSearchList.View = System.Windows.Forms.View.Details;
             this.ListSearchList.Visible = false;
+            this.ListSearchList.DoubleClick += new System.EventHandler(this.ListSearchList_DoubleClick);
             // 
             // ListName
             // 
@@ -251,31 +248,65 @@ namespace FileSearcher
             // 
             this.ListSearchTree.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ListSearchTree.FullRowSelect = true;
-            this.ListSearchTree.Location = new System.Drawing.Point(12, 191);
+            this.ListSearchTree.Location = new System.Drawing.Point(10, 153);
+            this.ListSearchTree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ListSearchTree.Name = "ListSearchTree";
-            this.ListSearchTree.Size = new System.Drawing.Size(850, 851);
+            this.ListSearchTree.Size = new System.Drawing.Size(744, 682);
             this.ListSearchTree.TabIndex = 9;
             this.ListSearchTree.Visible = false;
-            this.ListSearchTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ListSearchTree_NodeMouseClick);
+            this.ListSearchTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.ListSearchTree_BeforeExpand);
+            this.ListSearchTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ListSearchTree_AfterSelect);
             // 
             // ListSearchBT
             // 
             this.ListSearchBT.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ListSearchBT.Location = new System.Drawing.Point(231, 140);
-            this.ListSearchBT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ListSearchBT.Location = new System.Drawing.Point(52, 102);
             this.ListSearchBT.Name = "ListSearchBT";
-            this.ListSearchBT.Size = new System.Drawing.Size(88, 34);
+            this.ListSearchBT.Size = new System.Drawing.Size(127, 46);
             this.ListSearchBT.TabIndex = 10;
-            this.ListSearchBT.Text = "검색";
+            this.ListSearchBT.Text = "찾을 위치 설정";
             this.ListSearchBT.UseVisualStyleBackColor = true;
             this.ListSearchBT.Visible = false;
             this.ListSearchBT.Click += new System.EventHandler(this.ListSearchBT_Click);
             // 
+            // ListLabel
+            // 
+            this.ListLabel.AutoSize = true;
+            this.ListLabel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ListLabel.Location = new System.Drawing.Point(539, 117);
+            this.ListLabel.Name = "ListLabel";
+            this.ListLabel.Size = new System.Drawing.Size(0, 16);
+            this.ListLabel.TabIndex = 11;
+            // 
+            // ListSearchBT2
+            // 
+            this.ListSearchBT2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ListSearchBT2.Location = new System.Drawing.Point(453, 113);
+            this.ListSearchBT2.Name = "ListSearchBT2";
+            this.ListSearchBT2.Size = new System.Drawing.Size(77, 27);
+            this.ListSearchBT2.TabIndex = 12;
+            this.ListSearchBT2.Text = "검색";
+            this.ListSearchBT2.UseVisualStyleBackColor = true;
+            this.ListSearchBT2.Visible = false;
+            this.ListSearchBT2.Click += new System.EventHandler(this.ListSearchBT2_Click);
+            // 
+            // ListSearchTB
+            // 
+            this.ListSearchTB.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ListSearchTB.Location = new System.Drawing.Point(194, 114);
+            this.ListSearchTB.Name = "ListSearchTB";
+            this.ListSearchTB.Size = new System.Drawing.Size(253, 26);
+            this.ListSearchTB.TabIndex = 13;
+            this.ListSearchTB.Visible = false;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1684, 844);
+            this.Controls.Add(this.ListSearchTB);
+            this.Controls.Add(this.ListSearchBT2);
+            this.Controls.Add(this.ListLabel);
             this.Controls.Add(this.ListSearchTree);
             this.Controls.Add(this.ListSearchBT);
             this.Controls.Add(this.ListSearchList);
@@ -288,7 +319,6 @@ namespace FileSearcher
             this.Controls.Add(this.ListSearchBut);
             this.Controls.Add(this.nameSearchBut);
             this.Controls.Add(this.FilenameListBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "파일 탐색기";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -319,6 +349,9 @@ namespace FileSearcher
         private System.Windows.Forms.ColumnHeader ListPath;
         private System.Windows.Forms.ColumnHeader ListDate;
         private System.Windows.Forms.ColumnHeader ListLength;
+        private System.Windows.Forms.Label ListLabel;
+        private System.Windows.Forms.Button ListSearchBT2;
+        private System.Windows.Forms.TextBox ListSearchTB;
     }
 }
 
