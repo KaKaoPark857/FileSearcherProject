@@ -12,13 +12,6 @@ using System.Diagnostics; //process로 파일 및 폴더를 열기 위한 클래
 using IWshRuntimeLibrary; //바탕화면 바로가기 참조(com/windows script host object model) 추가 후 사용하기 위해 추가
 using System.Threading;
 
-/*
- * 상위 경로 설정 후 하위 디렉토리까지 모두 다 찾기
- * 리스트 박스내 파일 클릭 시 해당 폴더 열기 or 파일 열기
- * 버튼으로 클릭
- * 버튼으로 선택한 파일 바탕화면에 바로가기 만들기
- */
-
 namespace FileSearcher
 {
     public partial class Form1 : Form
@@ -33,12 +26,13 @@ namespace FileSearcher
         }
 
         private void nameSearchBut_Click(object sender, EventArgs e)
-        {
+        { //이름으로 찾기 버튼 클릭 시
             FIlenameLabel.Visible = true;
             FilenameTB.Visible = true;
             FilenameBT.Visible = true;
             FilenameListBox.Visible = true;
             DirName.Visible = true;
+
             ListSearchList.Visible = false;
             ListSearchTree.Visible = false;
             ListSearchBT.Visible = false;
@@ -47,11 +41,12 @@ namespace FileSearcher
         }
        
         private void FilenameBT_Click(object sender, EventArgs e)
-        {
+        { //이름으로 찾기에서 검색 버튼을 눌렀을 때
             string spath = DirName.Text;
             FilenameListBox.Items.Clear();
 
-            DirectoryInfo di = new DirectoryInfo(spath + ":\\");// 3D Printer\\");// visual Workspace
+            DirectoryInfo di = new DirectoryInfo(spath + ":\\visual Workspace\\");//이부분 각자 원하는 위치의 디렉토리로 변경
+                                                                                  //최상위 디렉토리로 설정시 권한 문제로 실행 불가
 
             //FileInfo file = new FileInfo(spath+"\\");
 
@@ -75,7 +70,8 @@ namespace FileSearcher
                 {
                     foreach (FileInfo file in filestr)//di.GetFiles(FilenameTB.Text, SearchOption.AllDirectories))
                     {
-                        FilenameListBox.Items.Add(new ListViewItem(new string[] { file.Name, file.DirectoryName, file.CreationTime.ToString(), file.Length.ToString() }));
+                        FilenameListBox.Items.Add(new ListViewItem(new string[] { file.Name, file.DirectoryName, 
+                            file.CreationTime.ToString(), file.Length.ToString() }));
                     }
                 }
                 catch (UnauthorizedAccessException)
@@ -89,13 +85,13 @@ namespace FileSearcher
             FilenameTB.Clear();
         }
         private void OpenFolderBT_Click(object sender, EventArgs e)
-        {
+        { //해당 폴더 열기
             string path = FilenameListBox.SelectedItems[0].SubItems[1].Text;
             Process.Start(path);
         }
 
         private void MakeCopyBT_Click(object sender, EventArgs e)
-        {
+        { //바탕화면 바로가기 만들기
             string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); //바탕화면 경로지정
 
             string linkFile = path + "\\" + FilenameListBox.SelectedItems[0].SubItems[0].Text + ".lnk";
@@ -106,7 +102,8 @@ namespace FileSearcher
             {
                 WshShell wshShell = new WshShell();
                 IWshShortcut link = (IWshShortcut)wshShell.CreateShortcut(linkFileCreate.FullName);
-                link.TargetPath = FilenameListBox.SelectedItems[0].SubItems[1].Text + "\\" + FilenameListBox.SelectedItems[0].SubItems[0].Text; //리스트 박스에서 선택한 파일 경로 선택
+                link.TargetPath = FilenameListBox.SelectedItems[0].SubItems[1].Text + "\\" + 
+                    FilenameListBox.SelectedItems[0].SubItems[0].Text; //리스트 박스에서 선택한 파일 경로 선택
                 link.Save(); //바로가기 저장
             }
             catch (Exception)
@@ -136,11 +133,12 @@ namespace FileSearcher
             ListSearchBT2.Visible = true;
             ListSearchTB.Visible = true;
 
-           
+            ListSearchTree.Nodes.Clear();
             m_curPath = "Root";
             ListLabel.Text = m_curPath;
 
             TreeNode root = ListSearchTree.Nodes.Add(m_curPath);
+            
             
             string[] drives = Directory.GetLogicalDrives();//드라이브 읽어오기    
 
@@ -154,7 +152,8 @@ namespace FileSearcher
                     node.Nodes.Add("\\");//파일 경로에 \ 추가
                 }
             }
-
+            root.Expand();
+            
 
 
         }
@@ -183,7 +182,7 @@ namespace FileSearcher
         }
         private void ViewDirectoryList(string path) //디렉토리 리스트 보기(리스트 뷰 출력)
         {
-            if (m_thread != null && m_thread.IsAlive)
+            if (m_thread != null && m_thread.IsAlive) 
                 m_thread.Abort();
 
             string curPath = path;
@@ -272,7 +271,8 @@ namespace FileSearcher
                 if (ListSearchList.SelectedItems[0].Text.IndexOf("\\") > 0) //--> 검색으로 경로가 표시된 경우 사용
                     processPath = ListSearchList.SelectedItems[0].Text;
                 else
-                    processPath = m_curPath + "\\" + ListSearchList.SelectedItems[0].Text; //--> 트리뷰에서 얻어온 폴더를 읽어온 경우 사용
+                    processPath = m_curPath + "\\" + ListSearchList.SelectedItems[0].Text; 
+                    //--> 트리뷰에서 얻어온 폴더를 읽어온 경우 사용
 
                 Process.Start("explorer.exe", processPath); //윈도우 탐색기를 이용한 파일 실행
             }
